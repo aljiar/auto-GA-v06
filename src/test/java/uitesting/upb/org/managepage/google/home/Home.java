@@ -1,6 +1,5 @@
 package uitesting.upb.org.managepage.google.home;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import uitesting.upb.org.manageevents.Events;
@@ -11,22 +10,39 @@ import uitesting.upb.org.managepage.BasePage;
  */
 public class Home extends BasePage {
 
-    @FindBy(xpath = "")
-    private WebElement searchTextField;
+    @FindBy(xpath = "//a[contains(text(),'DEMO_KEY Rate Limits')]")
+    private WebElement demoKey;
 
-    @FindBy(css = "")
-    private WebElement searchButton;
+    @FindBy(xpath = "//a[contains(text(),'Authentication')]")
+    private WebElement authentication;
 
-    public Home searchText(String text){
-        Events.fillField(searchTextField, text);
-        return this;
+    @FindBy(xpath = "//li[contains(text(),'30')]")
+    private WebElement hourly30;
+
+    @FindBy(xpath = "//li[contains(text(),'50')]")
+    private WebElement daily50;
+
+
+    @FindBy(id = "tocify-header1")
+    private WebElement listing;
+
+    public void clickListingButton(){
+        Events.click(listing);
     }
-
-    public void clickSearchButton(){
-        Events.click(searchButton);
+    public void clickDemoButton(){
+        Events.click(demoKey);
     }
+    public void clickAuthenticationButton(){
+        Events.click(authentication);
+    }
+    public void searchQuizButton(){
+        clickListingButton();
+        clickListingButton();
+        clickAuthenticationButton();
+        clickDemoButton();
+        String h30=hourly30.getText();
+        String d50=daily50.getText();
+        System.out.println(h30+" "+d50);
 
-    public void searchTextAndClickSearchButton(String text){
-        searchText(text).clickSearchButton();
     }
 }
