@@ -42,7 +42,7 @@ public class Home extends BasePage {
         clickDemoButton();
         String h30=hourly30.getText();
         String d50=daily50.getText();
-        System.out.println(h30+" "+d50);
+        System.out.println("El texto buscado es: "+h30+" y "+d50);
 
     }
 }
