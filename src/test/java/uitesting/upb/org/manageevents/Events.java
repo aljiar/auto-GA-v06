@@ -18,4 +18,7 @@ public class Events {
     public static void fillField(WebElement searchTextField, String text) {
         searchTextField.sendKeys(text);
     }
+    public static void blankField(WebElement searchTextField) {
+        searchTextField.clear();
+    }
 }

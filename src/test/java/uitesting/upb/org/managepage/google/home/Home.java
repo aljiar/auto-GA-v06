@@ -1,6 +1,5 @@
 package uitesting.upb.org.managepage.google.home;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import uitesting.upb.org.manageevents.Events;
@@ -11,22 +10,33 @@ import uitesting.upb.org.managepage.BasePage;
  */
 public class Home extends BasePage {
 
-    @FindBy(xpath = "")
-    private WebElement searchTextField;
+    @FindBy(xpath = "//div[@id='Mateo']//input[@name='nombreCuenta']")
+    private WebElement searchFillCuenta;
 
-    @FindBy(css = "")
+    @FindBy(id = "CrearCuenta")
     private WebElement searchButton;
 
-    public Home searchText(String text){
-        Events.fillField(searchTextField, text);
+    @FindBy(xpath = "//div[@id='Mateo']//button[@id='btnEditar']")
+    private WebElement saveButton;
+
+    public Home fillCuenta(String text){
+        Events.fillField(searchFillCuenta, text);
         return this;
     }
 
-    public void clickSearchButton(){
+    public void clickAddAccountButton(){
         Events.click(searchButton);
     }
+    public Home clearCuenta(){
+        Events.blankField(searchFillCuenta);
+        return this;
+    }
+    public void clickSaveAccountButton(){
+        Events.click(saveButton);
+    }
 
-    public void searchTextAndClickSearchButton(String text){
-        searchText(text).clickSearchButton();
+    public void addAccountAndRenameButton(String text){
+        clickAddAccountButton();
+        clearCuenta().fillCuenta(text).clickSaveAccountButton();
     }
 }

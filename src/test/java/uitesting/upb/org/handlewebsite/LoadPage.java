@@ -8,12 +8,12 @@ import uitesting.upb.org.webdrivermanager.DriverManager;
  * @autor Marcelo Garay
  */
 public class LoadPage {
-    public static Home loadGoogleHome(){
+    public static Home loadProjectHome(){
         DriverManager.getInstance().getWebDriver().navigate().to(PropertyAccesor.getInstance().getBaseURL());
         return new Home();
     }
 
     public static void main(String[] args) {
-        loadGoogleHome().searchTextAndClickSearchButton("UPB cochabamba");
+        loadProjectHome().addAccountAndRenameButton("Juan");
     }
 }
